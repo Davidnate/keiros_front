@@ -7,6 +7,7 @@ import Sidebar from "./components/sidebarView";
 import store from "./store";
 import { Provider } from "react-redux";
 import DarkModeToggle from './components/DarkModeToggle';
+import Header from "./components/headerView";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -34,12 +35,8 @@ export default function RootLayout({ children }) {
           {}
           <div style={{ display: "flex" }}>
             <Sidebar />
-            <div
-              style={{
-                marginLeft: "250px",
-                padding: "20px",
-              }}
-            >
+            {/* <Header/> */}
+          <div>
               {children}
             </div>
           </div>

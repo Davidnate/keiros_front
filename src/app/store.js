@@ -7,6 +7,7 @@ const store = configureStore({
         sidebar: sidebarReducer, //Reducer del sidebar
         theme: themeReducer,
     },
-});
+})
+
 
 export default store
