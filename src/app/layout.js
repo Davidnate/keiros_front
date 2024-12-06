@@ -32,14 +32,11 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Provider store={store}>
-          {}
-          <div style={{ display: "flex" }}>
-            <Sidebar />
-            {/* <Header/> */}
+          { }
           <div>
-              {children}
-            </div>
+            {children}
           </div>
+
         </Provider>
       </body>
     </html>
