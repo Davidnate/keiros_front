@@ -64,7 +64,7 @@ const Sidebar = () => {
     <div className="grid grid-flow-row">
     <div className="flex">
       <div
-        className={`${isOpen ? "w-60" : "w-20"
+        className={`${isOpen ? "w-screen md:w-60 " : "w-20"
           } duration-300 min-h-screen p-5 pt-8 bg-lightGreen relative flex flex-col justify-between`}
       >
 
