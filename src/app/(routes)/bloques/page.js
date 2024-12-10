@@ -3,16 +3,17 @@
 import Header from "@/app/components/headerView";
 import Sidebar from "@/app/components/sidebarView";
 import Statebox from "@/app/components/stateBox";
+import Tableblocks from "@/app/components/tableBlock";
 import { FcOk } from "react-icons/fc";
 import { FcHighPriority } from "react-icons/fc";
 import { LuBoxes } from "react-icons/lu";
 
 export default function Bloques() {
   return (
-    <div className="flex">
-      <Sidebar />
-      <div className="flex flex-col w-full">
-        <Header />
+    <div className="flex ">
+      <Sidebar/>
+      <div className="flex flex-col w-full ">
+        <Header className="fixed"/>
         <div className="flex justify-center items-center mt-5 ">
           <h1 className="text-black text-6xl">
             BLOQUES
@@ -25,6 +26,7 @@ export default function Bloques() {
             <Statebox Numstate="0" title="Deshabilitados" icon={FcHighPriority} />
           </div>
         </div>
+        <Tableblocks className="text-black"/>
       </div>
     </div>
   );

@@ -62,109 +62,108 @@ const Sidebar = () => {
   return (
 
     <div className="grid grid-flow-row">
-    <div className="flex">
-      <div
-        className={`${isOpen ? "w-screen md:w-60 " : "w-20"
-          } duration-300 min-h-screen p-5 pt-8 bg-lightGreen relative flex flex-col justify-between`}
-      >
-
-        <div>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="black"
-            className={`absolute cursor-pointer rounded-full -right-3 top-9 w-7 border-2 border-darkBlue bg-letters ${!isOpen && "rotate-180"
-              }`}
-            onClick={() => dispatch(toggleSidebar())}
-          >
-
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15.75 19.5 8.25 12l7.5-7.5"
-            />
-          </svg>
-          <div className="flex gap-x-4 items-center">
-            <Link href={"/" || "#"}>
-              <img
-                src="/img/logosena_negro.png"
-                alt="logoSena"
-                className={`cursor-pointer duration-500 w-10 h-10`}
-              />
-            </Link>
-            <h1
-              className={`text-white origin-left font-bold text-3xl font-inter 
-              duration-300 ${!isOpen && "scale-0"}`}
+      <div className="flex relative">
+        <div
+          className={`${isOpen ? "w-screen md:w-60" : "w-20"
+            } duration-300 min-h-screen p-5 pt-8 bg-lightGreen flex flex-col justify-between`}
+        >
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="black"
+              className={`absolute cursor-pointer rounded-full -right-3 top-9 w-7 border-2 border-darkBlue bg-letters ${!isOpen && "rotate-180"
+                }`}
+              onClick={() => dispatch(toggleSidebar())}
             >
-              Horarios
-            </h1>
-          </div>
-          <ul className="pt-6">
-            {Menus.map((menu, index) => (
-              <li
-                key={menu.title}
-                className={`text-white text-sm flex flex-col items-start gap-x-4 cursor-pointer my-2 rounded-md h-full ${menu.hasSubmenu ? "relative" : ""
-                  }`}
-              >
-                <Link href={menu.link || "#"}>
-                  <div
-                    className="flex items-center gap-x-4 p-2 rounded-md hover:bg-darkGreen group"
-                    onClick={() => {
-                      if (menu.hasSubmenu) {
-                        setIsToolsOpen(!isToolsOpen);
-                      }
-                    }}
-                  >
-                    <menu.icon className="text-xl transition-colors group-hover:text-black" />
-                    <span
-                      className={`${!isOpen && "hidden"
-                        } origin-left duration-300 group-hover:font-bold`}
-                    >
-                      {menu.title}
-                    </span>
-                  </div>
-                </Link>
 
-                {menu.hasSubmenu && isToolsOpen && isOpen && (
-                  <div className="mt-2 rounded-md">
-                    <ul className="pl-3 pt-1">
-                      {menu.submenus.map((submenu, subIndex) => (
-                        <li
-                          key={submenu.title}
-                          className="text-white text-sm flex items-center gap-x-2 p-1 font-inter m-2 transition-colors rounded-md hover:bg-darkGreen group"
-                        >
-                          {submenu.link ? (
-                            <Link
-                              href={submenu.link}
-                              className="flex items-center gap-x-2 w-full"
-                            >
-                              <submenu.icon className="text-sm transition-colors group-hover:text-black" />
-                              <span className="transition-colors group-hover:font-bold">
-                                {submenu.title}
-                              </span>
-                            </Link>
-                          ) : (
-                            <span>{submenu.title}</span>
-                          )}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="flex items-center gap-x-3 cursor-pointer p-2 rounded-md hover:bg-darkGreen group">
-          <IoMdSettings size={24} className="transition-colors group-hover:text-black" />
-          <h3 className={`text-white font-inter ${!isOpen && "hidden"} origin-left duration-300 group-hover:font-bold`}>
-            Configuración
-          </h3>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15.75 19.5 8.25 12l7.5-7.5"
+              />
+            </svg>
+            <div className="flex gap-x-4 items-center">
+              <Link href={"/" || "#"}>
+                <img
+                  src="/img/logosena_negro.png"
+                  alt="logoSena"
+                  className={`cursor-pointer duration-500 w-10 h-10`}
+                />
+              </Link>
+              <h1
+                className={`text-white origin-left font-bold text-3xl font-inter 
+              duration-300 ${!isOpen && "scale-0"}`}
+              >
+                Horarios
+              </h1>
+            </div>
+            <ul className="pt-6">
+              {Menus.map((menu, index) => (
+                <li
+                  key={menu.title}
+                  className={`text-white text-sm flex flex-col items-start gap-x-4 cursor-pointer my-2 rounded-md h-full ${menu.hasSubmenu ? "relative" : ""
+                    }`}
+                >
+                  <Link href={menu.link || "#"}>
+                    <div
+                      className="flex items-center gap-x-4 p-2 rounded-md hover:bg-darkGreen group"
+                      onClick={() => {
+                        if (menu.hasSubmenu) {
+                          setIsToolsOpen(!isToolsOpen);
+                        }
+                      }}
+                    >
+                      <menu.icon className="text-xl transition-colors group-hover:text-black" />
+                      <span
+                        className={`${!isOpen && "hidden"
+                          } origin-left duration-300 group-hover:font-bold`}
+                      >
+                        {menu.title}
+                      </span>
+                    </div>
+                  </Link>
+
+                  {menu.hasSubmenu && isToolsOpen && isOpen && (
+                    <div className="mt-2 rounded-md">
+                      <ul className="pl-3 pt-1">
+                        {menu.submenus.map((submenu, subIndex) => (
+                          <li
+                            key={submenu.title}
+                            className="text-white text-sm flex items-center gap-x-2 p-1 font-inter m-2 transition-colors rounded-md hover:bg-darkGreen group"
+                          >
+                            {submenu.link ? (
+                              <Link
+                                href={submenu.link}
+                                className="flex items-center gap-x-2 w-full"
+                              >
+                                <submenu.icon className="text-sm transition-colors group-hover:text-black" />
+                                <span className="transition-colors group-hover:font-bold">
+                                  {submenu.title}
+                                </span>
+                              </Link>
+                            ) : (
+                              <span>{submenu.title}</span>
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="flex items-center gap-x-3 cursor-pointer p-2 rounded-md hover:bg-darkGreen group">
+            <IoMdSettings size={24} className="transition-colors group-hover:text-black" />
+            <h3 className={`text-white font-inter ${!isOpen && "hidden"} origin-left duration-300 group-hover:font-bold`}>
+              Configuración
+            </h3>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };
