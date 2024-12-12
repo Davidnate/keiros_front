@@ -4,6 +4,8 @@ import { MdKeyboardArrowRight, MdKeyboardArrowLeft, MdKeyboardDoubleArrowLeft, M
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { HiXMark } from "react-icons/hi2";
+
+
 function Tableblocks({ data, columns }) {
 
 
@@ -35,7 +37,7 @@ function Tableblocks({ data, columns }) {
                     value={filtering}
                     onChange={e => setFiltering(e.target.value)}
                     placeholder='Buscar'
-                    className='w-[20%] p-1 border-2 border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300'
+                    className='w-[20%] p-1 border-2 border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition duration-300'
                 />
             </div>
             <table className='border-collapse border-spacing-0 w-[100%] border-solid border-2'>

@@ -94,7 +94,7 @@ const Sidebar = () => {
                 />
               </Link>
               {isOpen && (
-                <h1 className="text-white origin-left font-bold text-3xl font-inter duration-300">
+                <h1 className="text-white origin-left font-bold text-3xl font-inter duration-500">
                   Horarios
                 </h1>
               )}

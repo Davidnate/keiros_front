@@ -2,12 +2,8 @@
 
 import localFont from "next/font/local";
 import "./globals.css";
-import Link from "next/link";
-import Sidebar from "./components/sidebarView";
-import store from "./store";
+import { store } from "./store";
 import { Provider } from "react-redux";
-import DarkModeToggle from './components/DarkModeToggle';
-import Header from "./components/headerView";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

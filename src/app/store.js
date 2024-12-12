@@ -3,7 +3,7 @@ import sidebarReducer from '../features/sidebarSlice'
 import themeReducer from '../features/themeSlice'
 import userReducer from '../features/userSlice'
 
-const store = configureStore({
+export const store = configureStore({
     reducer: {
         sidebar: sidebarReducer, //Reducer del sidebar
         theme: themeReducer,
@@ -12,4 +12,5 @@ const store = configureStore({
 })
 
 
-export default store
+export const RootState = store.getState;
+export const AppDispatch = store.dispatch;

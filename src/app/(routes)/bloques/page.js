@@ -9,11 +9,13 @@ import { FcHighPriority } from "react-icons/fc";
 import { LuBoxes } from "react-icons/lu";
 import data from '@/utils/MOCK_DATA'
 import Addregister from "@/app/components/addRegister";
+import { useEffect, useState } from "react";
+import { getBlocks } from "@/service/bloqueService";
 
 const columns = [
   {
-    header: "#",
-    accessorKey: "#"
+    header: "id",
+    accessorKey: "id"
   },
   {
     header: "Jornada",
@@ -21,15 +23,35 @@ const columns = [
   },
   {
     header: "Hora Inicio",
-    accessorKey: "hour_begin"
+    accessorKey: "hora_inicio"
   },
   {
     header: "Hora Fin",
-    accessorKey: "hour_end"
+    accessorKey: "hora_fin"
   }
 ]
 
 export default function Bloques() {
+  const [blocks, setBlocks] = useState([]);
+
+  useEffect(() => {
+    const fetchBlocks = async () => {
+        try {
+            const blocksRes = await getBlocks();
+            console.log(blocksRes); 
+            if (blocksRes.success) {
+                setBlocks(blocksRes.data);
+            } else {
+                console.error("Error al obtener los bloques:", blocksRes.message);
+            }
+        } catch (error) {
+            console.error("Error en la petición:", error);
+        }
+    };
+
+    fetchBlocks();
+}, []);
+
   return (
     <div className="flex">
       <div className="sticky top-0 h-screen">
@@ -58,7 +80,7 @@ export default function Bloques() {
           </div>
           <div className="flex justify-center items-center mb-10">
             <div className="w-[80%]">
-              <Tableblocks data={data} columns={columns}
+              <Tableblocks data={blocks} columns={columns}
                 className="text-black" />
             </div>
           </div>
