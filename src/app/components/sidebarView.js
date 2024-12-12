@@ -65,7 +65,7 @@ const Sidebar = () => {
       <div className="flex relative">
         <div
           className={`${isOpen ? "w-screen md:w-60" : "w-20"
-            } duration-300 min-h-screen p-5 pt-8 bg-lightGreen flex flex-col justify-between`}
+            } duration-300 min-h-screen p-5 pt-8 bg-lightGreen flex flex-col justify-between `}
         >
           <div>
             <svg
@@ -86,20 +86,20 @@ const Sidebar = () => {
               />
             </svg>
             <div className="flex gap-x-4 items-center">
-              <Link href={"/" || "#"}>
+              <Link href="/">
                 <img
                   src="/img/logosena_negro.png"
                   alt="logoSena"
-                  className={`cursor-pointer duration-500 w-10 h-10`}
+                  className="cursor-pointer w-10 h-10 invert-item"
                 />
               </Link>
-              <h1
-                className={`text-white origin-left font-bold text-3xl font-inter 
-              duration-300 ${!isOpen && "scale-0"}`}
-              >
-                Horarios
-              </h1>
+              {isOpen && (
+                <h1 className="text-white origin-left font-bold text-3xl font-inter duration-300">
+                  Horarios
+                </h1>
+              )}
             </div>
+
             <ul className="pt-6">
               {Menus.map((menu, index) => (
                 <li
