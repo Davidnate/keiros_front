@@ -4,13 +4,16 @@ import Header from "@/app/components/headerView";
 import Sidebar from "@/app/components/sidebarView";
 import Statebox from "@/app/components/stateBox";
 import Tableblocks from "@/app/components/tableInfo";
-import { FcOk } from "react-icons/fc";
+import { CgCheckO } from "react-icons/cg";
 import { FcHighPriority } from "react-icons/fc";
 import { LuBoxes } from "react-icons/lu";
-import data from '@/utils/MOCK_DATA'
 import Addregister from "@/app/components/addRegister";
 import { useEffect, useState } from "react";
 import { getBlocks } from "@/service/bloqueService";
+import { useDispatch } from "react-redux";
+
+
+
 
 const columns = [
   {
@@ -33,6 +36,7 @@ const columns = [
 
 export default function Bloques() {
   const [blocks, setBlocks] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchBlocks = async () => {
@@ -52,8 +56,23 @@ export default function Bloques() {
     fetchBlocks();
 }, []);
 
+
+const [theme, setTheme] = useState("light")
+
+useEffect(() => {
+  if (theme ==  "dark"){
+    document.querySelector('html').classList.add('dark')
+  }else {
+    document.querySelector("html").classList.remove('dark')
+  }
+}, [theme])
+
+const handleToggle = () => {
+  setTheme(prevTheme => prevTheme == "light" ? "dark" : "light")
+}
+
   return (
-    <div className="flex">
+    <div className="flex dark:bg-BGbody">
       <div className="sticky top-0 h-screen">
         <Sidebar />
       </div>
@@ -61,14 +80,14 @@ export default function Bloques() {
 
         <Header />
         <div className="flex justify-center items-center mt-5">
-          <h1 className="text-black text-6xl sm:text-base md:text-lg lg:text-3xl xl:text-6xl">
+          <h1 className="text-black text-6xl sm:text-base md:text-lg lg:text-3xl xl:text-6xl dark:text-white">
             BLOQUES
           </h1>
         </div>
         <div className="flex justify-center items-center">
           <div className="flex flex-col lg:flex-row sm:justify-between w-4/5 mt-10 justify-between items-center">
             <Statebox Numstate="3" title="Bloques" icon={LuBoxes} />
-            <Statebox Numstate="3" title="Habilitados" icon={FcOk} />
+            <Statebox Numstate="3" title="Habilitados" icon={CgCheckO } />
             <Statebox Numstate="0" title="Deshabilitados" icon={FcHighPriority} />
           </div>
         </div>

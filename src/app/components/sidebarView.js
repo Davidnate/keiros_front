@@ -24,6 +24,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { toggleSidebar } from "@/features/sidebarSlice";
 import { useState } from "react";
 import "../globals.css";
+import DarkModeToggle from "./DarkModeToggle";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -65,7 +66,7 @@ const Sidebar = () => {
       <div className="flex relative">
         <div
           className={`${isOpen ? "w-screen md:w-60" : "w-20"
-            } duration-300 min-h-screen p-5 pt-8 bg-lightGreen flex flex-col justify-between `}
+            } duration-300 min-h-screen p-5 pt-8 bg-lightGreen flex flex-col justify-between dark:bg-purple_new`}
         >
           <div>
             <svg
@@ -109,14 +110,14 @@ const Sidebar = () => {
                 >
                   <Link href={menu.link || "#"}>
                     <div
-                      className="flex items-center gap-x-4 p-2 rounded-md hover:bg-darkGreen group"
+                      className="flex items-center gap-x-4 p-2 rounded-md hover:bg-darkGreen group dark:hover:bg-purpleDark"
                       onClick={() => {
                         if (menu.hasSubmenu) {
                           setIsToolsOpen(!isToolsOpen);
                         }
                       }}
                     >
-                      <menu.icon className="text-xl transition-colors group-hover:text-black" />
+                      <menu.icon className="text-xl transition-colors group-hover:text-black dark:group-hover:text-gray-400" />
                       <span
                         className={`${!isOpen && "hidden"
                           } origin-left duration-300 group-hover:font-bold`}
@@ -132,14 +133,14 @@ const Sidebar = () => {
                         {menu.submenus.map((submenu, subIndex) => (
                           <li
                             key={submenu.title}
-                            className="text-white text-sm flex items-center gap-x-2 p-1 font-inter m-2 transition-colors rounded-md hover:bg-darkGreen group"
+                            className="text-white text-sm flex items-center gap-x-2 p-1 font-inter m-2 transition-colors rounded-md hover:bg-darkGreen group dark:hover:bg-purpleDark"
                           >
                             {submenu.link ? (
                               <Link
                                 href={submenu.link}
                                 className="flex items-center gap-x-2 w-full"
                               >
-                                <submenu.icon className="text-sm transition-colors group-hover:text-black" />
+                                <submenu.icon className="text-sm transition-colors group-hover:text-black dark:group-hover:text-gray-400" />
                                 <span className="transition-colors group-hover:font-bold">
                                   {submenu.title}
                                 </span>
@@ -156,12 +157,14 @@ const Sidebar = () => {
               ))}
             </ul>
           </div>
-          <div className="flex items-center gap-x-3 cursor-pointer p-2 rounded-md hover:bg-darkGreen group">
+          {/* <div className="flex items-center gap-x-3 cursor-pointer p-2 rounded-md hover:bg-darkGreen group">
             <IoMdSettings size={24} className="transition-colors group-hover:text-black" />
             <h3 className={`text-white font-inter ${!isOpen && "hidden"} origin-left duration-300 group-hover:font-bold`}>
               Configuración
             </h3>
-          </div>
+            
+          </div> */}
+          <DarkModeToggle/>
         </div>
       </div>
     </div>

@@ -18,11 +18,12 @@ const Header = () => {
 
 
     return (
-        <header className="flex p-4 bg-gray-300 text-white w-full h-16">
+        <header className="flex p-4 bg-gray-300 text-white w-full h-16 dark:bg-secondBgDark">
         {loggedIn && (
             <div className="relative flex items-center space-x-2 ml-auto">
                 <button onClick={() => setMenuOpen(!menuOpen)}
-                    className="flex items-center space-x-2 px-5 py-1 bg-lightGreen rounded-full hover:bg-darkGreen transition-colors mr-2">
+                    className="flex items-center space-x-2 px-5 py-1 bg-lightGreen rounded-full hover:bg-darkGreen transition-colors mr-2
+                    dark:bg-purple_new">
                     <img src={user.photo} alt="" className="w-6 h-6 rounded-full" />
                     <span>{user.name}</span>
                 </button>

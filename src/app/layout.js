@@ -24,17 +24,16 @@ const geistMono = localFont({
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <Provider store={store}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Provider store={store}>
           { }
           <div>
             {children}
           </div>
-
-        </Provider>
       </body>
+      </Provider>
     </html>
   );
 }

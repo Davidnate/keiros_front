@@ -5,6 +5,7 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  "darkMode": "class",
   theme: {
     extend: {
       colors: {
@@ -24,7 +25,13 @@ module.exports = {
         greenMoodal: 'rgba(60, 239, 60, 0.5)',
         grayBack: '#D9D9D9',
         purple_new:'#71277A',
-        yellow_sun: '#FDC300'
+        purpleDark:'#34123C',
+        BGbody: '#2A2A2A',
+        yellow_sun: '#FDC300',
+        textCol: '#E0E0E0',
+        iconDark: '#B0E0E6',
+        shadowDark: '#3A3A3C',
+        secondBgDark: '#1C1C1E'
       },
       fontFamily: {
         inter: ['Inter', 'sans-serif']
