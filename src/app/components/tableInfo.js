@@ -62,12 +62,12 @@ function Tableblocks({ data, columns }) {
                     {table.getRowModel().rows.map((row) => (
                         <tr key={row.id} className="odd:bg-slate-100 text-center">
                             {row.getVisibleCells().map((cell) => (
-                                <td key={cell.id} className="text-black border-solid border-2 py-2">
+                                <td key={cell.id} className="text-black border-solid border-2 py-2 bg-white">
                                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                 </td>
                             ))}
-                            <td className="border-solid border-2">
-                                <button className="p-1 bg-yellow-400 mx-2 rounded-md">
+                            <td className="border-solid border-2 bg-white">
+                                <button className="p-1 bg-yellow-400 mx-2 rounded-md ">
                                     <FaEdit size={20} className="rounded-s-sm text-black" />
                                 </button>
                                 <button className="p-1 bg-red-600 mx-2 rounded-md">
