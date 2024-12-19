@@ -36,9 +36,10 @@ const columns = [
 
 export default function Bloques() {
   const [blocks, setBlocks] = useState([]);
+
   const dispatch = useDispatch();
+
   const { data, metrics, loading, error} = useSelector(state => state.blocks);
-   
 
   
 
@@ -68,7 +69,7 @@ const handleToggle = () => {
 console.log(data);
 
   return (
-    <div className="flex dark:bg-BGbody">
+    <div className="flex">{/* <div className="flex dark:bg-BGbody" */}
       <div className="sticky top-0 h-screen">
         <Sidebar />
       </div>
@@ -76,7 +77,7 @@ console.log(data);
 
         <Header />
         <div className="flex justify-center items-center mt-5">
-          <h1 className="text-black text-6xl sm:text-base md:text-lg lg:text-3xl xl:text-6xl dark:text-white">
+          <h1 className="text-black text-6xl sm:text-base md:text-lg lg:text-3xl xl:text-6xl">
             BLOQUES
           </h1>
         </div>
