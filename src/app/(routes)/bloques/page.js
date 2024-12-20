@@ -11,6 +11,7 @@ import Addregister from "@/app/components/addRegister";
 import { useEffect, useState } from "react";
 import { getBlocks } from "@/service/bloqueService";
 import { useDispatch } from "react-redux";
+import RegisterModal from "@/app/components/modal/modalView";
 
 
 
@@ -40,36 +41,36 @@ export default function Bloques() {
 
   useEffect(() => {
     const fetchBlocks = async () => {
-        try {
-            const blocksRes = await getBlocks();
-            console.log(blocksRes); 
-            if (blocksRes.success) {
-                setBlocks(blocksRes.data);
-            } else {
-                console.error("Error al obtener los bloques:", blocksRes.message);
-            }
-        } catch (error) {
-            console.error("Error en la petición:", error);
+      try {
+        const blocksRes = await getBlocks();
+        console.log(blocksRes);
+        if (blocksRes.success) {
+          setBlocks(blocksRes.data);
+        } else {
+          console.error("Error al obtener los bloques:", blocksRes.message);
         }
+      } catch (error) {
+        console.error("Error en la petición:", error);
+      }
     };
 
     fetchBlocks();
-}, []);
+  }, []);
 
 
-const [theme, setTheme] = useState("light")
+  const [theme, setTheme] = useState("light")
 
-useEffect(() => {
-  if (theme ==  "dark"){
-    document.querySelector('html').classList.add('dark')
-  }else {
-    document.querySelector("html").classList.remove('dark')
+  useEffect(() => {
+    if (theme == "dark") {
+      document.querySelector('html').classList.add('dark')
+    } else {
+      document.querySelector("html").classList.remove('dark')
+    }
+  }, [theme])
+
+  const handleToggle = () => {
+    setTheme(prevTheme => prevTheme == "light" ? "dark" : "light")
   }
-}, [theme])
-
-const handleToggle = () => {
-  setTheme(prevTheme => prevTheme == "light" ? "dark" : "light")
-}
 
   return (
     <div className="flex dark:bg-BGbody">
@@ -87,7 +88,7 @@ const handleToggle = () => {
         <div className="flex justify-center items-center">
           <div className="flex flex-col lg:flex-row sm:justify-between w-4/5 mt-10 justify-between items-center">
             <Statebox Numstate="3" title="Bloques" icon={LuBoxes} />
-            <Statebox Numstate="3" title="Habilitados" icon={CgCheckO } />
+            <Statebox Numstate="3" title="Habilitados" icon={CgCheckO} />
             <Statebox Numstate="0" title="Deshabilitados" icon={FcHighPriority} />
           </div>
         </div>
@@ -95,6 +96,41 @@ const handleToggle = () => {
           <div className="w-[90%] my-6">
             <div className="flex justify-end">
               <Addregister />
+            </div>
+            <div>
+              <RegisterModal title={"Registra Nuevos Bloques"}>
+                <form>
+                  <div className="mt-4 ml-4">
+                    <div className="flex flex-col">
+                      <div className="mb-5">
+                        <label className="block text-black font-medium mb-2 ml-2">
+                          Jornada
+                        </label>
+                        <select name="SelectJornada" id="SelectJornada" className="p-2 rounded-lg text-black w-[60%]">
+                          <option value="op1">Seleccione una Jornada</option>
+                          <option value="op2">Mañana</option>
+                          <option value="op3">Tarde</option>
+                        </select>
+                      </div>
+
+                      <div className="mb-5">
+                        <label className="block text-black font-medium mb-2 ml-2">
+                          Hora Inicio
+                        </label>
+                        <input type="time" name="horaInicio" id="horaInicio" className="block p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black w-[60%]" />
+                      </div>
+
+                      <div>
+                        <label className="block text-black font-medium mb-2 ml-2">
+                          Hora Fin
+                        </label>
+                        <input type="time" name="horaFin" id="horaFin" className="block p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black w-[60%]" />
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+              </RegisterModal>
             </div>
           </div>
           <div className="flex justify-center items-center mb-10">

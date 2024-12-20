@@ -3,6 +3,7 @@ import sidebarReducer from '../features/sidebarSlice'
 import themeReducer from '../features/themeSlice'
 import userReducer from '../features/userSlice'
 import tableReducer from '../features/tableSlice'
+import modalReducer from '../features/modal/modalSlice'
 
 export const store = configureStore({
     reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
         theme: themeReducer,
         user: userReducer,
         table: tableReducer,
+        modal: modalReducer,
     },
 })
 
