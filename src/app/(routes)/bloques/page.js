@@ -2,16 +2,15 @@
 
 import Header from "@/app/components/headerView";
 import Sidebar from "@/app/components/sidebarView";
-import Statebox from "@/app/components/stateBox";
+import TotalBox from "@/app/components/stateBox";
 import Tableblocks from "@/app/components/tableInfo";
 import { CgCheckO } from "react-icons/cg";
 import { FcHighPriority } from "react-icons/fc";
 import { LuBoxes } from "react-icons/lu";
 import Addregister from "@/app/components/addRegister";
 import { useEffect, useState } from "react";
-import { getBlocks } from "@/service/bloqueService";
-import { useDispatch } from "react-redux";
-import RegisterModal from "@/app/components/modal/modalView";
+import { fetchBlocks } from "@/features/blocksSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 
 
@@ -37,25 +36,20 @@ const columns = [
 
 export default function Bloques() {
   const [blocks, setBlocks] = useState([]);
+
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const fetchBlocks = async () => {
-      try {
-        const blocksRes = await getBlocks();
-        console.log(blocksRes);
-        if (blocksRes.success) {
-          setBlocks(blocksRes.data);
-        } else {
-          console.error("Error al obtener los bloques:", blocksRes.message);
-        }
-      } catch (error) {
-        console.error("Error en la petición:", error);
-      }
-    };
+  const { data, metrics, loading, error} = useSelector(state => state.blocks);
 
-    fetchBlocks();
-  }, []);
+  
+
+  useEffect(() => {
+    dispatch(fetchBlocks());
+    
+}, [dispatch]);
+
+
+
 
 
   const [theme, setTheme] = useState("light")
@@ -68,12 +62,14 @@ export default function Bloques() {
     }
   }, [theme])
 
-  const handleToggle = () => {
-    setTheme(prevTheme => prevTheme == "light" ? "dark" : "light")
-  }
+const handleToggle = () => {
+  setTheme(prevTheme => prevTheme == "light" ? "dark" : "light")
+}
+
+console.log(data);
 
   return (
-    <div className="flex dark:bg-BGbody">
+    <div className="flex">{/* <div className="flex dark:bg-BGbody" */}
       <div className="sticky top-0 h-screen">
         <Sidebar />
       </div>
@@ -81,15 +77,15 @@ export default function Bloques() {
 
         <Header />
         <div className="flex justify-center items-center mt-5">
-          <h1 className="text-black text-6xl sm:text-base md:text-lg lg:text-3xl xl:text-6xl dark:text-white">
+          <h1 className="text-black text-6xl sm:text-base md:text-lg lg:text-3xl xl:text-6xl">
             BLOQUES
           </h1>
         </div>
         <div className="flex justify-center items-center">
           <div className="flex flex-col lg:flex-row sm:justify-between w-4/5 mt-10 justify-between items-center">
-            <Statebox Numstate="3" title="Bloques" icon={LuBoxes} />
-            <Statebox Numstate="3" title="Habilitados" icon={CgCheckO} />
-            <Statebox Numstate="0" title="Deshabilitados" icon={FcHighPriority} />
+            <TotalBox numstate={metrics.total} title="Bloques" icon={LuBoxes} />
+            <TotalBox numstate={metrics.enabled} title="Habilitados" icon={CgCheckO } />
+            <TotalBox numstate={metrics.disabled} title="Deshabilitados" icon={FcHighPriority} />
           </div>
         </div>
         <div>
@@ -135,7 +131,7 @@ export default function Bloques() {
           </div>
           <div className="flex justify-center items-center mb-10">
             <div className="w-[80%]">
-              <Tableblocks data={blocks} columns={columns}
+              <Tableblocks data={data} columns={columns}
                 className="text-black" />
             </div>
           </div>

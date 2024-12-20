@@ -26,12 +26,13 @@ module.exports = {
         grayBack: '#D9D9D9',
         purple_new:'#71277A',
         purpleDark:'#34123C',
-        BGbody: '#2A2A2A',
+        BGbody: '#1C1C1E',
         yellow_sun: '#FDC300',
         textCol: '#E0E0E0',
         iconDark: '#B0E0E6',
         shadowDark: '#3A3A3C',
-        secondBgDark: '#1C1C1E'
+        secondBgDark: '#2D2D30',
+        borderColor: '#71277A'
       },
       fontFamily: {
         inter: ['Inter', 'sans-serif']

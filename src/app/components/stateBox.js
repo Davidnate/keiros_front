@@ -1,15 +1,12 @@
 'use client'
 
-import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-
-const Statebox = ({ title, Numstate, icon: Icon }) => {
+const TotalBox = ({ title, numstate, icon: Icon }) => {
     return (
-        <div className="flex flex-col my-3 2xl:flex-row items-center py-4 space-y-4  w-[80%] lg:w-[25%] border border-gray-300 rounded-md shadow-slate-300 shadow-xl justify-between
+        <div className="flex flex-col my-3 2xl:flex-row items-center py-4 space-y-4  w-[80%] lg:w-[25%] border border-borderColor rounded-md shadow-slate-300 shadow-md justify-between
         dark:bg-secondBgDark dark:shadow-shadowDark">
             <div className="flex flex-col mx-5 items-center">
-                <h2 className="text-xl text-black dark:text-textCol">{title}</h2>
-                <h1 className="text-xl text-black font-semibold dark:text-white">{Numstate}</h1>
+                <h2 className="text-xl text-black dark:text-white">{title}</h2>
+                <h1 className="text-xl text-black font-semibold dark:text-white">{numstate}</h1>
 
             </div>
             <div className="mt-3 sm:mt-0">
@@ -19,4 +16,4 @@ const Statebox = ({ title, Numstate, icon: Icon }) => {
     )
 }
 
-export default Statebox;
+export default TotalBox;

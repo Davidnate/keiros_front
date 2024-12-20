@@ -2,7 +2,7 @@
 
 import Header from "@/app/components/headerView";
 import Sidebar from "@/app/components/sidebarView";
-import Totalbox from "@/app/components/totalBox";
+import Totalbox from "@/app/components/stateBox";
 import Disablebox from "@/app/components/stateBox";
 import Enablebox from "@/app/components/enableBox";
 
